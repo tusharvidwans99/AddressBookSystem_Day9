@@ -20,9 +20,9 @@ namespace AddressBookSystem
                 return;
             }
             Console.WriteLine("Here are the current people in your address book:\n");
-            foreach (var person in People)
+            for(int i=0; i < People.Count;i++)
             {
-                PrintPerson(person);
+                PrintPerson(People[i]);
             }
             Console.WriteLine("\nPress any key to continue.");
             Console.ReadKey();
