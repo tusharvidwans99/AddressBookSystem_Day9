@@ -19,7 +19,7 @@ namespace AddressBookSystem
                 Console.ReadKey();
                 return;
             }
-            Console.WriteLine("Here are the current people in your address book:");
+            Console.WriteLine("Here are the current people in your address book:\n");
             for(int i=0; i < People.Count;i++)
             {
                 PrintPerson(People[i]);
@@ -83,12 +83,12 @@ namespace AddressBookSystem
         }
 
 
-        public void Edit(string Name)
+        public void Edit(string FullName)
         {
             
             for (int i = 0; i < People.Count; i++)
             {
-                if (People[i].FirstName.ToLower() +" "+ People[i].LastName.ToLower() == Name.ToLower())
+                if (People[i].FirstName.ToLower() +" "+ People[i].LastName.ToLower() == FullName.ToLower())
                 {
                     Console.WriteLine("Which thing do you want to change: ");
                     Console.WriteLine("Enter \'1\' for First Name\n\'2\' for LastName\n\'3 for Phone Number\n\'4\' for Address\n\'5\' for All");
@@ -141,6 +141,19 @@ namespace AddressBookSystem
             
             
 
+
+        }
+
+        public void remove(string FullName)
+        {
+            for(int i=0; i < People.Count; i++)
+            {
+                if (People[i].FirstName.ToLower() + " " + People[i].LastName.ToLower() == FullName.ToLower())
+                {
+                    People.RemoveAt(i);
+                }
+            }
+            ListPeople();
 
         }
     }
