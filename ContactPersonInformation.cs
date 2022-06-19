@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 
 namespace AddressBook
 {
@@ -32,6 +33,35 @@ namespace AddressBook
         {
             ContactPersonInformation contactPersonalInformation = new ContactPersonInformation();
             //able to add multiple contact details in one list
+            /* string path = @"C:\Users\vishu\source\repos\Address Book FileIO Day 20\Address Book FileIO Day 20\Data.txt";
+             if(File.Exists(path))
+             {
+                 //string[] contactDetailsData;
+                 //contactDetailsData = File.ReadAllLines(path);
+                 //foreach()
+                 using (StreamReader sr = File.OpenText(path))
+                 {
+                     string contactPersonData = "";
+
+                     while ((contactPersonData = sr.ReadLine())!=null )
+                     {
+                         string[] array = contactPersonData.Split(" ");
+                         string firstName = array[0];
+                         string lastName = array[1];
+                         string address = array[2];
+                         string city = array[3];
+                         string state = array[4];
+                         int zip = Convert.ToInt32(array[5]);
+                         double phoneNo = Convert.ToDouble(array[6]);
+                         string eMail = array[7];
+
+                         ContactDetails contactDetails = new ContactDetails(firstName, lastName, address, city, state, zip, phoneNo, eMail);
+
+                         //Adding Contact details in the list
+                         contactDetailsList.Add(contactDetails);
+                     }
+                 }
+             }*/
 
             while (true)
             {
@@ -87,6 +117,31 @@ namespace AddressBook
             }
             nLog.LogDebug("Displaying Contact Details Successful :DisplayingContactDetails()");
         }
+        /// <summary>
+        /// writing contact details and address book name for each address book.
+        /// </summary>
+        /// <param name="addressBookName"></param>
+        public void AddingContactDetailsinTextFile(string addressBookName)
+        {
+            string path = @"C:\Users\tusha\source\repos\AddessBookSystem\AddessBookSystem\DataFile.txt";
+            if (File.Exists(path))
+            {
+
+                using (StreamWriter sr = File.AppendText(path))
+                {
+                    sr.WriteLine("The name of the address book is" + addressBookName);
+                    foreach (ContactDetails contactPerson in contactDetailsList)
+                    {
+                        sr.WriteLine($"First Name : {contactPerson.firstName} || Last Name: {contactPerson.lastName} || Address: {contactPerson.address} || City: {contactPerson.city} || State: {contactPerson.state}|| zip: {contactPerson.zip} || Phone No: {contactPerson.phoneNo} || eMail: {contactPerson.eMail}");
+                    }
+
+                    //string lines = File.ReadAllText(path);
+                    //Console.WriteLine(lines);
+                    sr.Close();
+                }
+            }
+        }
+
         /// <summary>
         /// Edits contact details in address book
         /// </summary>
@@ -523,8 +578,8 @@ namespace AddressBook
             Console.WriteLine("Please press 2 to sort the data by city");
             Console.WriteLine("Please press 3 to sort the data by state");
             Console.WriteLine("Please press 4 to sort the data by zip");
-            Console.WriteLine("Please press any other to return the unsorted contacts");
-            var sortingContacts = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Please press any number to return the unsorted contacts");
+            int sortingContacts = Convert.ToInt32(Console.ReadLine());
             switch (sortingContacts)
             {
                 case 1:

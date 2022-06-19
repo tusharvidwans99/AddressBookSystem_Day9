@@ -44,3 +44,13 @@
 2022-06-19 16:53:23.9626|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
 2022-06-19 16:53:34.3836|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
 2022-06-19 16:53:42.4269|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 17:19:24.8156|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 17:19:47.1648|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 17:19:48.5574|INFO|AddressBook.NLog|No more contact details have been entered
+2022-06-19 17:20:56.0585|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 17:21:14.4527|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 17:21:15.6375|INFO|AddressBook.NLog|No more contact details have been entered
+2022-06-19 17:22:58.3689|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 17:23:24.2447|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 17:23:25.4933|INFO|AddressBook.NLog|No more contact details have been entered
+2022-06-19 17:23:28.4368|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
