@@ -9,6 +9,9 @@ namespace AddressBook
     {
         //Declaring List to store contact details
         List<ContactDetails> contactDetailsList;
+        Dictionary<string, List<ContactDetails>> cityDetailsDictionary;
+        HashSet<string> cityList;
+        HashSet<string> stateList;
         private readonly NLog nLog = new NLog();
 
         /// <summary>
@@ -17,6 +20,9 @@ namespace AddressBook
         public ContactPersonInformation()
         {
             contactDetailsList = new List<ContactDetails>();
+            cityDetailsDictionary = new Dictionary<string, List<ContactDetails>>();
+            cityList = new HashSet<string>();
+            stateList = new HashSet<string>();
         }
 
         /// <summary>
@@ -65,7 +71,6 @@ namespace AddressBook
                 contactDetailsList.Add(contactDetails);
                 nLog.LogDebug("Contact Details Addition Successful: AddingContactDetails()");
             }
-
             contactPersonalInformation.DisplayContactDetails();
 
         }
@@ -393,7 +398,7 @@ namespace AddressBook
         /// </summary>
         /// <param name="searchCity"></param>
         /// <returns>used to throw exception</returns>
-        public bool SearchingContactDetailsByCity(string searchCity)
+        public void SearchingContactDetailsByCity(string searchCity)
         {
             //used to check if city exist and increments the index. If index=0, exception is thrown
             int index = 0;
@@ -409,19 +414,16 @@ namespace AddressBook
             if (index == 0)
             {
                 //custom exception is thrown when city is not in list
-                throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.Wrong_city_name, "City name is not in list");
+                Console.WriteLine("there is no state in this list with this name");
             }
-            else
-            {
-                return true;
-            }
+
         }
         /// <summary>
         /// Method to search details using state
         /// </summary>
         /// <param name="searchState"></param>
         /// <returns>used to throw exception</returns>
-        public bool SearchingContactDetailsByState(string searchState)
+        public void SearchingContactDetailsByState(string searchState)
         {
             //index is used to check if state exist
             int index = 0;
@@ -436,13 +438,83 @@ namespace AddressBook
             }
             if (index == 0)
             {
-                //throws custom exception
-                throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.Wrong_state_name, "State name is not in list");
+                //prints message
+                Console.WriteLine("there is no state in this list with this name");
             }
-            else
+        }
+        /// <summary>
+        /// Adding contact details by city in list
+        /// </summary>
+        /// <param name="cityName"></param>
+        /// <param name="cityDetailsList">city details list obtained from other address books</param>
+        /// <returns>list of contact details from one address book</returns>
+        public List<ContactDetails> AddingContactDetailsByCity(string cityName, List<ContactDetails> cityDetailsList)
+        {
+            //foreach loop iterates over each contact person details, and if city matches, contact details are added in list
+            //loop runs until all the values are searched in one addressbook, contact detail list.
+            //returns the citydetail list from one addressbook
+            //same city detail list is received as a parameter for other address book
+            foreach (ContactDetails contactPerson in contactDetailsList)
             {
-                return true;
+                //checks if city is there in list
+                if (contactPerson.city.Equals(cityName))
+                {
+                    cityDetailsList.Add(contactPerson);
+                }
             }
+            return cityDetailsList;
+        }
+        /// <summary>
+        /// Gets hashset of all the cities in particular contact list
+        /// </summary>
+        /// <returns></returns>
+        public HashSet<string> GettingCityList()
+        {
+            //foreach loop is used to get each entry in contact list in address book
+            //each city is taken out and added in cityList which is hashset
+            //hashset is returned
+            foreach (ContactDetails contactPerson in contactDetailsList)
+            {
+                cityList.Add(contactPerson.city);
+            }
+            return cityList;
+        }
+        /// <summary>
+        /// Adding contact details by state in list
+        /// </summary>
+        /// <param name="stateName"></param>
+        /// <param name="stateDetailsList">city details list obtained from other address books</param>
+        /// <returns>list of contact details from one address book</returns>
+        public List<ContactDetails> AddingContactDetailsByState(string stateName, List<ContactDetails> stateDetailsList)
+        {
+            //foreach loop iterates over each contact person details, and if state matches, contact details are added in list
+            //loop runs until all the values are searched in one addressbook, contact detail list.
+            //returns the statedetail list from one addressbook
+            //same state detail list is received as a parameter for other address book
+            foreach (ContactDetails contactPerson in contactDetailsList)
+            {
+                //checks if state is there in list
+                if (contactPerson.state.Equals(stateName))
+                {
+                    stateDetailsList.Add(contactPerson);
+                }
+            }
+            return stateDetailsList;
+        }
+        /// <summary>
+        /// Gets hashset of all the states in particular contact list
+        /// </summary>
+        /// <returns></returns>
+        public HashSet<string> GettingStateList()
+        {
+            //foreach loop is used to get each entry in contact list in address book
+            //each state is taken out and added in stateList which is hashset
+            //hashset is returned
+            foreach (ContactDetails contactPerson in contactDetailsList)
+            {
+                stateList.Add(contactPerson.state);
+            }
+            return stateList;
         }
     }
 
