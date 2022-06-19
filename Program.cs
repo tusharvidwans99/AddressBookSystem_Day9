@@ -20,7 +20,19 @@ namespace AddressBook
                 //Taking input for user to determine task to do
                 //passing the input to switch case
                 //Calling the methods from Address Book accordingly
-                Console.WriteLine("\nEnter 1 to add New Address Book \nEnter 2 to Add Contacts \nEnter 3 to Edit Contacts \nEnter 4 to Delete Contacts\nEnter 5 to display all the addressbooks and contact details\nEnter 6 to delete address book\nEnter 7 to Search Contact Details using City\nEnter 8 to search Contact Details using state\nEnter 9 to view contact details with city\nEnter 10 to view contact details with state\nEnter any other key to exit");
+                Console.WriteLine("\nEnter 1 to add New Address Book ");
+                Console.WriteLine("Enter 2 to Add Contacts");
+                Console.WriteLine("Enter 3 to Edit Contacts");
+                Console.WriteLine("Enter 4 to Delete Contacts");
+                Console.WriteLine("Enter 5 to display all the addressbooks and contact details");
+                Console.WriteLine("Enter 6 to delete address book");
+                Console.WriteLine("Enter 7 to Search Contact Details using City");
+                Console.WriteLine("Enter 8 to search Contact Details using state");
+                Console.WriteLine("Enter 9 to view contact details and count with city");
+                Console.WriteLine("Enter 10 to view contact details and count with state");
+                Console.WriteLine("Enter any other key to exit");
+
+
                 string options = Console.ReadLine();
                 switch (options)
                 {

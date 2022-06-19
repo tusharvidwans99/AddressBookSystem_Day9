@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace AddressBook
 {
@@ -49,6 +50,7 @@ namespace AddressBook
                 bool checkForContactInList = contactPersonalInformation.CheckingForNameinExistingContactList(contactDetailsList, firstName, lastName);
                 if (checkForContactInList == false)
                 {
+                    Console.WriteLine("Name already exist in the contact list, please enter new name");
                     continue;
                 }
                 string address = Console.ReadLine();
@@ -379,16 +381,16 @@ namespace AddressBook
         /// <returns></returns>
         public bool CheckingForNameinExistingContactList(List<ContactDetails> contactDetailsList, string firstName, string lastName)
         {
-            foreach (ContactDetails contactDetail in contactDetailsList)
+            //checking the details using lambda expression
+            //find is used to return object, once value matches
+            //s contains individual element from list, which is contact details, hence assigned to contact details
+            ContactDetails contactDetails = contactDetailsList.Find(s => s.firstName == firstName && s.lastName == lastName);
+            if (contactDetails != null)
             {
-                if (firstName.Equals(contactDetail.firstName) && lastName.Equals(contactDetail.lastName))
-                //if (contactDetail.firstName == firstName && contactDetail.lastName == lastName && contactDetail.address == address && contactDetail.city == city && contactDetail.state == state && contactDetail.zip == zip && contactDetail.phoneNo == phoneNo && contactDetail.eMail == eMail)
-                {
-                    //if same contact details are entered, than details are entered again
-                    nLog.LogError("Contact details have already been entered");
-                    Console.WriteLine("Contact details have already been entered \n please add new contact details");
-                    return false;
-                }
+                //if same contact details are entered, than details are entered again
+                nLog.LogError("Contact details have already been entered");
+                Console.WriteLine("Contact details have already been entered \n please add new contact details");
+                return false;
 
             }
             return true;
@@ -402,14 +404,15 @@ namespace AddressBook
         {
             //used to check if city exist and increments the index. If index=0, exception is thrown
             int index = 0;
-            foreach (ContactDetails contactPerson in contactDetailsList)
+            //used lambda expression for checking equality with the city
+            foreach (ContactDetails contactPerson in contactDetailsList.FindAll(s => s.city.Equals(searchCity)))
             {
                 //checks if city is there in list
-                if (contactPerson.city.Equals(searchCity))
-                {
-                    Console.WriteLine($"First Name : {contactPerson.firstName} || Last Name: {contactPerson.lastName} || Address: {contactPerson.address} || City: {contactPerson.city} || State: {contactPerson.state}|| zip: {contactPerson.zip} || Phone No: {contactPerson.phoneNo} || eMail: {contactPerson.eMail}");
-                    index++;
-                }
+                //if(contactPerson.city.Equals(searchCity))
+                // {
+                Console.WriteLine($"First Name : {contactPerson.firstName} || Last Name: {contactPerson.lastName} || Address: {contactPerson.address} || City: {contactPerson.city} || State: {contactPerson.state}|| zip: {contactPerson.zip} || Phone No: {contactPerson.phoneNo} || eMail: {contactPerson.eMail}");
+                index++;
+                //}
             }
             if (index == 0)
             {
@@ -427,14 +430,15 @@ namespace AddressBook
         {
             //index is used to check if state exist
             int index = 0;
-            foreach (ContactDetails contactPerson in contactDetailsList)
+            //using lambda expression to search for state among contact person list
+            foreach (ContactDetails contactPerson in contactDetailsList.FindAll(s => s.state.Equals(searchState)))
             {
-                if (contactPerson.state.Equals(searchState))
-                {
-                    //Displays details for particular state
-                    Console.WriteLine($"First Name : {contactPerson.firstName} || Last Name: {contactPerson.lastName} || Address: {contactPerson.address} || City: {contactPerson.city} || State: {contactPerson.state}|| zip: {contactPerson.zip} || Phone No: {contactPerson.phoneNo} || eMail: {contactPerson.eMail}");
-                    index++;
-                }
+                //if (contactPerson.state.Equals(searchState))
+                //{
+                //Displays details for particular state
+                Console.WriteLine($"First Name : {contactPerson.firstName} || Last Name: {contactPerson.lastName} || Address: {contactPerson.address} || City: {contactPerson.city} || State: {contactPerson.state}|| zip: {contactPerson.zip} || Phone No: {contactPerson.phoneNo} || eMail: {contactPerson.eMail}");
+                index++;
+                //}
             }
             if (index == 0)
             {
@@ -454,13 +458,14 @@ namespace AddressBook
             //loop runs until all the values are searched in one addressbook, contact detail list.
             //returns the citydetail list from one addressbook
             //same city detail list is received as a parameter for other address book
-            foreach (ContactDetails contactPerson in contactDetailsList)
+            //using lambda expression to search for cityname in contact detail list
+            foreach (ContactDetails contactPerson in contactDetailsList.FindAll(s => s.city.Equals(cityName)))
             {
                 //checks if city is there in list
-                if (contactPerson.city.Equals(cityName))
-                {
-                    cityDetailsList.Add(contactPerson);
-                }
+                //if (contactPerson.city.Equals(cityName))
+                //{
+                cityDetailsList.Add(contactPerson);
+                //}
             }
             return cityDetailsList;
         }
@@ -491,13 +496,14 @@ namespace AddressBook
             //loop runs until all the values are searched in one addressbook, contact detail list.
             //returns the statedetail list from one addressbook
             //same state detail list is received as a parameter for other address book
-            foreach (ContactDetails contactPerson in contactDetailsList)
+            //using lambda function to search for state name in contact list
+            foreach (ContactDetails contactPerson in contactDetailsList.FindAll(s => s.state.Equals(stateName)))
             {
                 //checks if state is there in list
-                if (contactPerson.state.Equals(stateName))
-                {
-                    stateDetailsList.Add(contactPerson);
-                }
+                //if (contactPerson.state.Equals(stateName))
+                //{
+                stateDetailsList.Add(contactPerson);
+                //}
             }
             return stateDetailsList;
         }

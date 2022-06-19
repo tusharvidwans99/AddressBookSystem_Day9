@@ -201,12 +201,17 @@ namespace AddressBook
         {
             foreach (KeyValuePair<string, List<ContactDetails>> cityDetails in cityDetailsDictionary)
             {
-                Console.WriteLine(cityDetails.Key);
+                Console.WriteLine(cityDetails.Key + ":");
+                //index is used to maintain count of each city
+                int index = 0;
                 foreach (ContactDetails contactPerson in cityDetails.Value)
                 {
                     Console.WriteLine($"First Name : {contactPerson.firstName} || Last Name: {contactPerson.lastName} || Address: {contactPerson.address} || City: {contactPerson.city} || State: {contactPerson.state}|| zip: {contactPerson.zip} || Phone No: {contactPerson.phoneNo} || eMail: {contactPerson.eMail}");
-
+                    index++;
                 }
+                //displays name of city and count of contact details
+                Console.WriteLine($"Total no of contact details in {cityDetails.Key} are {index}");
+                Console.WriteLine("");
 
             }
         }
@@ -218,12 +223,17 @@ namespace AddressBook
             foreach (KeyValuePair<string, List<ContactDetails>> stateDetails in stateDetailsDictionary)
             {
                 Console.WriteLine(stateDetails.Key);
+                //index is used to maintain count of each state
+                int index = 0;
                 foreach (ContactDetails contactPerson in stateDetails.Value)
                 {
                     Console.WriteLine($"First Name : {contactPerson.firstName} || Last Name: {contactPerson.lastName} || Address: {contactPerson.address} || City: {contactPerson.city} || State: {contactPerson.state}|| zip: {contactPerson.zip} || Phone No: {contactPerson.phoneNo} || eMail: {contactPerson.eMail}");
+                    index++;
 
                 }
-
+                //displays total count for each state
+                Console.WriteLine($"Total no of contact details in {stateDetails.Key} are {index}");
+                Console.WriteLine("");
             }
         }
         /// <summary>
