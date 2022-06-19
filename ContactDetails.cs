@@ -15,7 +15,18 @@ namespace AddressBook
         public double phoneNo;
         public string eMail;
 
-
+        /// <summary>
+        /// Calling Constructor for initializing variables 
+        /// variables are called and initialized from contact person information class
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="address"></param>
+        /// <param name="city"></param>
+        /// <param name="state"></param>
+        /// <param name="zip"></param>
+        /// <param name="phoneNo"></param>
+        /// <param name="eMail"></param>
         public ContactDetails(string firstName, string lastName, string address, string city, string state, int zip, double phoneNo, string eMail)
         {
             this.firstName = firstName;

@@ -1,0 +1,10 @@
+2022-06-19 10:52:46.0926|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 10:52:49.1377|INFO|AddressBook.NLog|No more contact details have been entered
+2022-06-19 10:52:49.1377|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 10:52:49.1377|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 10:52:49.1488|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 10:54:13.3040|DEBUG|AddressBook.NLog|Debug successful, email successfully changed : EditingContactDetails()
+2022-06-19 10:54:17.8239|INFO|AddressBook.NLog|Updation Process Completed : EditinContactDetails()
+2022-06-19 10:54:24.4319|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 10:54:24.4319|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 10:54:24.4319|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()

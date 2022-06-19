@@ -4,17 +4,23 @@ namespace AddressBook
 {
     class Program
     {
+        /// <summary>
+        /// Main program to call different methods
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address Book Management System");
-            //contactPersonInformation.AddingContactDetails("Lakshay", "Garg", "a", "b", "d", 3,5, "lakshay.garg");
-            ContactPersonInformation contactPersonInformation = new ContactPersonInformation();
+            //creating object for Address Book Class
             AddressBook addressBook = new AddressBook();
             bool flag = true;
 
             while (flag)
             {
-                Console.WriteLine("\nEnter 1 to add New Address Book \nEnter 2 to Add Contacts \nEnter 3 to Edit Contacts \nEnter 4 to Delete Contacts\nEnter 5 to display all the addressbooks and contact details\nEnter 6 to delete address book\nPress any key to exit");
+                //Taking input for user to determine task to do
+                //passing the input to switch case
+                //Calling the methods from Address Book accordingly
+                Console.WriteLine("\nEnter 1 to add New Address Book \nEnter 2 to Add Contacts \nEnter 3 to Edit Contacts \nEnter 4 to Delete Contacts\nEnter 5 to display all the addressbooks and contact details\nEnter 6 to delete address book\nEnter any other key to exit");
                 string options = Console.ReadLine();
                 switch (options)
                 {
@@ -45,25 +51,6 @@ namespace AddressBook
                         break;
                 }
             }
-            /*contactPersonInformation.AddingContactDetails();
-            contactPersonInformation.DisplayContactDetails();
-           // AddressBook addressBook = new AddressBook();
-            //addressBook.DisplayAddressBook();
-            Console.WriteLine("Do you want to edit any details, enter y to edit.");
-            string input = Console.ReadLine();
-            if(input.ToLower()=="y")
-            {
-                contactPersonInformation.EditingContactDetails();
-                contactPersonInformation.DisplayContactDetails();
-
-            }
-            Console.WriteLine("Do you want to delete anything from contact details, press y for delete");
-            string inputForDelete = Console.ReadLine();
-            if(inputForDelete.ToLower()=="y"|| inputForDelete=="Y")
-            {
-                contactPersonInformation.DeletingContactDetails();
-                contactPersonInformation.DisplayContactDetails();
-            }*/
         }
     }
 }
