@@ -3,6 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Runtime.CompilerServices;
+using CsvHelper;
+using System.Globalization;
+using System.Linq;
 
 namespace AddressBook
 {
@@ -32,41 +36,12 @@ namespace AddressBook
         public void AddingContactDetails()
         {
             ContactPersonInformation contactPersonalInformation = new ContactPersonInformation();
-            //able to add multiple contact details in one list
-            /* string path = @"C:\Users\vishu\source\repos\Address Book FileIO Day 20\Address Book FileIO Day 20\Data.txt";
-             if(File.Exists(path))
-             {
-                 //string[] contactDetailsData;
-                 //contactDetailsData = File.ReadAllLines(path);
-                 //foreach()
-                 using (StreamReader sr = File.OpenText(path))
-                 {
-                     string contactPersonData = "";
-
-                     while ((contactPersonData = sr.ReadLine())!=null )
-                     {
-                         string[] array = contactPersonData.Split(" ");
-                         string firstName = array[0];
-                         string lastName = array[1];
-                         string address = array[2];
-                         string city = array[3];
-                         string state = array[4];
-                         int zip = Convert.ToInt32(array[5]);
-                         double phoneNo = Convert.ToDouble(array[6]);
-                         string eMail = array[7];
-
-                         ContactDetails contactDetails = new ContactDetails(firstName, lastName, address, city, state, zip, phoneNo, eMail);
-
-                         //Adding Contact details in the list
-                         contactDetailsList.Add(contactDetails);
-                     }
-                 }
-             }*/
+            
 
             while (true)
             {
             //used goto method to call the method again
-            Repeat: Console.WriteLine("Please enter first name, last name, address, city, state, zip, phoneno and email");
+            Repeat: Console.WriteLine("Please enter first name, last name, address, city, state, zip, phoneno and email\nHit Enter if don't want to add More Contacts");
                 string firstName = Console.ReadLine();
                 if (firstName == "")
                 {
@@ -141,6 +116,30 @@ namespace AddressBook
                 }
             }
         }
+        /// <summary>
+        /// Writing Contact Details into Csv file
+        /// </summary>
+        /// <param name="addressBookName"></param>
+        public void AddingContactDetailsInCsvFile(string addressBookName)
+        {
+            //giving path of the csv file with the help of address book name
+            string path = @"C:\Users\tusha\source\repos\AddessBookSystem\AddessBookSystem\ContactListCSV\" + addressBookName + ".csv";
+            //path for writing each csv file, is converted into stream
+            StreamWriter writer = new StreamWriter(path);
+            //creating csv writer object with stream writer and default delimiter- cultureinfo.invariantculture as parameter
+            var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            foreach (ContactDetails contactPerson in contactDetailsList)
+            {
+                Console.WriteLine($"First Name : {contactPerson.firstName} || Last Name: {contactPerson.lastName} || Address: {contactPerson.address} || City: {contactPerson.city} || State: {contactPerson.state}|| zip: {contactPerson.zip} || Phone No: {contactPerson.phoneNo} || eMail: {contactPerson.eMail}");
+            }
+            //writing list into csv file.
+            csv.WriteRecords(contactDetailsList);
+            //flush causes the data to persist, and to be written in memory.
+            writer.Flush();
+            //closing the csv file
+            writer.Close();
+        }
+
 
         /// <summary>
         /// Edits contact details in address book
@@ -578,7 +577,7 @@ namespace AddressBook
             Console.WriteLine("Please press 2 to sort the data by city");
             Console.WriteLine("Please press 3 to sort the data by state");
             Console.WriteLine("Please press 4 to sort the data by zip");
-            Console.WriteLine("Please press any number to return the unsorted contacts");
+            Console.WriteLine("Please press any other to return the unsorted contacts");
             int sortingContacts = Convert.ToInt32(Console.ReadLine());
             switch (sortingContacts)
             {

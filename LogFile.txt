@@ -54,3 +54,9 @@
 2022-06-19 17:23:24.2447|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
 2022-06-19 17:23:25.4933|INFO|AddressBook.NLog|No more contact details have been entered
 2022-06-19 17:23:28.4368|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 18:11:12.6432|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 18:11:18.1307|INFO|AddressBook.NLog|No more contact details have been entered
+2022-06-19 18:11:22.4622|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 18:13:52.9987|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 18:13:54.3705|INFO|AddressBook.NLog|No more contact details have been entered
+2022-06-19 18:13:56.1706|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
