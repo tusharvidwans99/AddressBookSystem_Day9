@@ -8,3 +8,18 @@
 2022-06-19 10:54:24.4319|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
 2022-06-19 10:54:24.4319|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
 2022-06-19 10:54:24.4319|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 11:03:25.0568|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 11:03:26.4715|INFO|AddressBook.NLog|No more contact details have been entered
+2022-06-19 11:03:26.4715|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 11:03:26.4715|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 11:03:26.4790|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 11:07:36.5205|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 11:07:38.0653|INFO|AddressBook.NLog|No more contact details have been entered
+2022-06-19 11:07:38.0653|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 11:07:38.0653|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 11:07:38.0776|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 11:09:43.2570|DEBUG|AddressBook.NLog|Contact Details Addition Successful: AddingContactDetails()
+2022-06-19 11:09:43.3997|INFO|AddressBook.NLog|No more contact details have been entered
+2022-06-19 11:09:43.3997|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 11:09:43.3997|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()
+2022-06-19 11:09:43.3997|DEBUG|AddressBook.NLog|Displaying Contact Details Successful :DisplayingContactDetails()

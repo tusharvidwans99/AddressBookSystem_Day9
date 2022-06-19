@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Address_Book_Problem_Collections;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -30,7 +31,6 @@ namespace AddressBook
             {
             //used goto method to call the method again
             Repeat: Console.WriteLine("Please enter first name, last name, address, city, state, zip, phoneno and email");
-                Console.Write("Enter First Name: ");
                 string firstName = Console.ReadLine();
                 if (firstName == "")
                 {
@@ -38,31 +38,25 @@ namespace AddressBook
                     nLog.LogInfo("No more contact details have been entered");
                     break;
                 }
-                Console.Write("Enter Last Name: ");
+
                 string lastName = Console.ReadLine();
                 bool checkForContactInList = contactPersonalInformation.CheckingForNameinExistingContactList(contactDetailsList, firstName, lastName);
                 if (checkForContactInList == false)
                 {
                     continue;
                 }
-                Console.Write("Enter Address: ");
                 string address = Console.ReadLine();
-                Console.Write("Enter City Name: ");
                 string city = Console.ReadLine();
-                Console.Write("Enter State: ");
                 string state = Console.ReadLine();
-                Console.Write("Enter ZipCode: ");
                 int zip = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Enter Phone Number: ");
                 double phoneNo = Convert.ToDouble(Console.ReadLine());
                 if (phoneNo <= 200000)
                 {
-                    //if phone no is less than 200000 then details are entered again
+                    //if phone no is less than 200000 than details are entered again
                     nLog.LogError("Entered Wrong Phone no. : AdditionContactDetails()");
                     Console.WriteLine("Wrong phone details entered, please enter your details again");
                     goto Repeat;
                 }
-                Console.Write("Enter Email: ");
                 string eMail = Console.ReadLine();
 
                 ContactDetails contactDetails = new ContactDetails(firstName, lastName, address, city, state, zip, phoneNo, eMail);
@@ -96,10 +90,8 @@ namespace AddressBook
         //better process is using exceptions
         addingDetailsAgainForEditing: Console.WriteLine("Please help us, first identify you");
             Console.WriteLine("Please enter your first name and phone no");
-            Console.Write("Enter First Name: ");
             string firstNm = Console.ReadLine();
             int editCheck = 0;
-            Console.Write("Enter Phone Number: ");
             double mobileNo = Convert.ToDouble(Console.ReadLine());
             foreach (ContactDetails contactDetails in contactDetailsList)
             {
@@ -107,7 +99,7 @@ namespace AddressBook
                 if (contactDetails.firstName == firstNm && contactDetails.phoneNo == mobileNo)
                 {
                 //asking user to input detail of what needs to be edited and forwarding the input to switch case.
-                EditAgain: Console.WriteLine("please select the serial no. of field which you want to change\n1. First name \n2.Last name\n3.Address\n4.City\n5.State\n6.Zip code\n7.Phone no.\n8.email");
+                EditAgain: Console.WriteLine("please select the serial no. of field which you want to change\n 1. First name \n2.Last name\n3.Address\n4.City\n5.State\n6.Zip code\n7.Phone no.\n 8.email");
                     int inputForEditing = Convert.ToInt32(Console.ReadLine());
                     editCheck++;
                     switch (inputForEditing)
@@ -299,7 +291,7 @@ namespace AddressBook
                             }
                         default:
                             Console.WriteLine("Wrong input entered");
-                            Console.WriteLine("Do you want to input again, press y to update again,else press enter");
+                            Console.WriteLine("Do you want to input again");
                             string input = Console.ReadLine();
                             if (input.ToLower() == "y")
                             {
@@ -384,7 +376,7 @@ namespace AddressBook
         {
             foreach (ContactDetails contactDetail in contactDetailsList)
             {
-                if (firstName.Equals(contactDetail.firstName) && lastName.Contains(contactDetail.lastName))
+                if (firstName.Equals(contactDetail.firstName) && lastName.Equals(contactDetail.lastName))
                 //if (contactDetail.firstName == firstName && contactDetail.lastName == lastName && contactDetail.address == address && contactDetail.city == city && contactDetail.state == state && contactDetail.zip == zip && contactDetail.phoneNo == phoneNo && contactDetail.eMail == eMail)
                 {
                     //if same contact details are entered, than details are entered again
@@ -395,6 +387,62 @@ namespace AddressBook
 
             }
             return true;
+        }
+        /// <summary>
+        /// Method to search contact details using city
+        /// </summary>
+        /// <param name="searchCity"></param>
+        /// <returns>used to throw exception</returns>
+        public bool SearchingContactDetailsByCity(string searchCity)
+        {
+            //used to check if city exist and increments the index. If index=0, exception is thrown
+            int index = 0;
+            foreach (ContactDetails contactPerson in contactDetailsList)
+            {
+                //checks if city is there in list
+                if (contactPerson.city.Equals(searchCity))
+                {
+                    Console.WriteLine($"First Name : {contactPerson.firstName} || Last Name: {contactPerson.lastName} || Address: {contactPerson.address} || City: {contactPerson.city} || State: {contactPerson.state}|| zip: {contactPerson.zip} || Phone No: {contactPerson.phoneNo} || eMail: {contactPerson.eMail}");
+                    index++;
+                }
+            }
+            if (index == 0)
+            {
+                //custom exception is thrown when city is not in list
+                throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.Wrong_city_name, "City name is not in list");
+            }
+            else
+            {
+                return true;
+            }
+        }
+        /// <summary>
+        /// Method to search details using state
+        /// </summary>
+        /// <param name="searchState"></param>
+        /// <returns>used to throw exception</returns>
+        public bool SearchingContactDetailsByState(string searchState)
+        {
+            //index is used to check if state exist
+            int index = 0;
+            foreach (ContactDetails contactPerson in contactDetailsList)
+            {
+                if (contactPerson.state.Equals(searchState))
+                {
+                    //Displays details for particular state
+                    Console.WriteLine($"First Name : {contactPerson.firstName} || Last Name: {contactPerson.lastName} || Address: {contactPerson.address} || City: {contactPerson.city} || State: {contactPerson.state}|| zip: {contactPerson.zip} || Phone No: {contactPerson.phoneNo} || eMail: {contactPerson.eMail}");
+                    index++;
+                }
+            }
+            if (index == 0)
+            {
+                //throws custom exception
+                throw new AddressBookCustomException(AddressBookCustomException.ExceptionType.Wrong_state_name, "State name is not in list");
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 

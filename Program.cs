@@ -20,7 +20,7 @@ namespace AddressBook
                 //Taking input for user to determine task to do
                 //passing the input to switch case
                 //Calling the methods from Address Book accordingly
-                Console.WriteLine("\nEnter 1 to add New Address Book \nEnter 2 to Add Contacts \nEnter 3 to Edit Contacts \nEnter 4 to Delete Contacts\nEnter 5 to display all the addressbooks and contact details\nEnter 6 to delete address book\nEnter any other key to exit");
+                Console.WriteLine("\nEnter 1 to add New Address Book \nEnter 2 to Add Contacts \nEnter 3 to Edit Contacts \nEnter 4 to Delete Contacts\nEnter 5 to display all the addressbooks and contact details\nEnter 6 to delete address book\nEnter 7 to Search Contact Details using City\nEnter 8 to search Contact Details using state\nEnter any other key to exit");
                 string options = Console.ReadLine();
                 switch (options)
                 {
@@ -45,6 +45,12 @@ namespace AddressBook
                         break;
                     case "6":
                         addressBook.DeletingAddressBook();
+                        break;
+                    case "7":
+                        addressBook.SearchingByCity();
+                        break;
+                    case "8":
+                        addressBook.SearchingByState();
                         break;
                     default:
                         flag = false;
